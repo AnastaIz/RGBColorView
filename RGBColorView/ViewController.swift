@@ -43,17 +43,17 @@ class ViewController: UIViewController {
     }
 
     @IBAction func redSliderAction() {
-        redValue.text = String(redSlider.value)
+        redValue.text = String(format: "%.2f", redSlider.value)
       fillViewWithColor()
     }
     
     @IBAction func greenSliderAction() {
-        greenValue.text = String(greenSlider.value)
+        greenValue.text = String(format: "%.2f", greenSlider.value)
         fillViewWithColor()
     }
     
     @IBAction func blueSliderAction() {
-        blueValue.text = String(blueSlider.value)
+        blueValue.text = String(format: "%.2f", blueSlider.value)
         fillViewWithColor()
     }
     

@@ -22,6 +22,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="8vc-3j-2H3"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Nrx-4C-G83">
                                 <rect key="frame" x="20" y="314" width="374" height="140"/>
