@@ -19,6 +19,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var colorView: UIView!
     
+    @IBOutlet weak var redTextField: UITextField!
+    @IBOutlet weak var greenTextField: UITextField!
+    @IBOutlet weak var blueTextField: UITextField!
+    
+    var delegate: ColorViewController!
+    var color: UIColor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +36,9 @@ class ViewController: UIViewController {
         setColor()
         
         setValue(for: redValue, greenValue, blueValue)
+        
     }
-
+    
     @IBAction func rgbSliderAction(_ sender: UISlider) {
         setColor()
         
@@ -40,6 +47,12 @@ class ViewController: UIViewController {
         case greenSlider: setValue(for: greenValue)
         default: setValue(for: blueValue)
         }
+    }
+    
+    @IBAction func doneButtonPressed(_ sender: UIButton) {
+        view.endEditing(true)
+        delegate.setBackgroundColor(colorView.backgroundColor!)
+        dismiss(animated: true)
     }
     
     private func setColor() {
@@ -55,10 +68,13 @@ class ViewController: UIViewController {
             switch value {
             case redValue:
                 value.text = string(from: redSlider)
+                redTextField.text = value.text
             case greenValue:
                 value.text = string(from: greenSlider)
+                greenTextField.text = value.text
             default:
                 value.text = string(from: blueSlider)
+                blueTextField.text = value.text
             }
         }
     }
@@ -66,5 +82,37 @@ class ViewController: UIViewController {
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
     }
+    
 }
+
+
+//extension ViewController {
+//    private func showAlert(title: String, message: String){
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//
+//        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+//            return
+//        }
+//
+//        alert.addAction(okAction)
+//        present(alert, animated: true)
+//    }
+//}
+//
+//extension ViewController: UITextFieldDelegate {
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        guard let newTextValue = textField.text else { return }
+//        guard let numberTextValue = Float(newTextValue) else { return }
+//
+//        switch textField {
+//        case redTextField:
+//            redSlider.value = numberTextValue
+//        case greenTextField:
+//            greenSlider.value = numberTextValue
+//        default:
+//            blueSlider.value = numberTextValue
+//        }
+//    }
+//}
+
 
